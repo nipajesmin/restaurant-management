@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYelp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className="bg-gray-900 text-white py-8 mt-4">
       <div className="container mx-auto px-4">
 
         {/* Restaurant Name and Tagline */}
