@@ -1,7 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import Authcontext from '../../context/Authcontext';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
+
+    const { createUser } = useContext(Authcontext);
     const handleRegister = (e) => {
         // const form = new FormData(e.target);
         // const name = form.get("name");
@@ -15,13 +19,52 @@ const Register = () => {
         // const url = form.get("url");
         //const password = form.get("password");
 
-        console.log(name, email, url, password);
- 
+        // console.log(name, email, url, password);
+
+        // Password validation
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters long.', { position: 'top-center' });
+            return;
+        }
+        if (!/[A-Z]/.test(password)) {
+            toast.error('Password must contain at least one uppercase letter.', { position: 'top-center' });
+            return;
+        }
+        if (!/[a-z]/.test(password)) {
+            toast.error('Password must contain at least one lowercase letter.', { position: 'top-center' });
+            return;
+        }
+
+
+        createUser(email, password)
+            .then(result => {
+                //  console.log(result.user);
+                const user = result.user;
+                toast.success('Registration successful!', { position: 'top-center' });
+                // updateUserProfile({ displayName: name, photoURL: url })
+                //     .then(() => {
+                //         setTimeout(() => {
+                //             Navigate('/');
+                //         }, 3000);
+                //     })
+                  //  .catch(error => {
+                        //     toast.error(error.message, { position: 'top-center' });
+                 //   });
+            })
+            .catch(error => {
+                //   console.log('Error found', error.code);
+                const errorCode = error.code
+                //console.log('Error found', error.message);
+                const errorMessage = error.message;
+                toast.error(error.message, { position: 'top-center' });
+            });
+
 
     }
     return (
         <div>
 
+            <ToastContainer />
             <h1 className="text-3xl md:text-5xl font-bold pb-5 pt-4 bg-base-200 text-center">
                 Register Now!
             </h1>
@@ -73,7 +116,7 @@ const Register = () => {
                             </label>
                             <div className="relative">
                                 <input
-
+                                    type="password"
                                     name="password"
                                     placeholder="password"
                                     className="input input-bordered w-full"
