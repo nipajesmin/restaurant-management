@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Authcontext from '../../context/Authcontext';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -20,6 +21,24 @@ const Register = () => {
         //const password = form.get("password");
 
         // console.log(name, email, url, password);
+
+        // Field validation
+        if (!name) {
+            toast.error('Name is required.', { position: 'top-center' });
+            return;
+        }
+        if (!email) {
+            toast.error('Email is required.', { position: 'top-center' });
+            return;
+        }
+        if (!url) {
+            toast.error('Photo URL is required.', { position: 'top-center' });
+            return;
+        }
+        if (!password) {
+            toast.error('Password is required.', { position: 'top-center' });
+            return;
+        }
 
         // Password validation
         if (password.length < 6) {

@@ -1,9 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Authcontext from '../context/Authcontext';
 
-const isActive = (path) => location.pathname === path;
+
 
 const Navbar = () => {
+
+    const { user, signOutUser } = useContext(Authcontext);
+    const location = useLocation();
+
+    // Function to check if the current route is active
+    const isActive = (path) => location.pathname === path;
     return (
         <nav className="bg-slate-300 text-white shadow-md">
             <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:justify-between items-center">
@@ -60,22 +67,22 @@ const Navbar = () => {
 
                 {/* User Section */}
                 <div className="mt-4 md:mt-0 flex items-center space-x-4">
-                    {/* {user && user.email ? ( */}
+                    {user && user.email ? (
                         <div className="flex items-center space-x-2">
                             <img
-                                // src={user?.photoURL}
+                                 src={user?.photoURL}
                                 alt="User"
                                 className="h-6 w-6 rounded-full object-cover"
-                                // title={user?.displayName || 'User'} // Tooltip with user's name
+                                 title={user?.displayName || 'User'} // Tooltip with user's name
                             />
                             <button
-                                // onClick={signOutUser}
+                                 onClick={signOutUser}
                                 className="text-black bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition"
                             >
                                 Sign Out
                             </button>
                         </div>
-                    {/* ) : ( */}
+                     ) : ( 
                         <div className="flex space-x-4">
                             <Link
                                 to="/signin"
@@ -90,7 +97,7 @@ const Navbar = () => {
                                 Register
                             </Link>
                         </div>
-                    {/* )} */}
+                     )} 
                 </div>
                 
 
