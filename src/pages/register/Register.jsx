@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
-    const { createUser } = useContext(Authcontext);
+    const { createUser, updateUserProfile } = useContext(Authcontext);
     const handleRegister = (e) => {
         // const form = new FormData(e.target);
         // const name = form.get("name");
@@ -60,15 +60,15 @@ const Register = () => {
                 //  console.log(result.user);
                 const user = result.user;
                 toast.success('Registration successful!', { position: 'top-center' });
-                // updateUserProfile({ displayName: name, photoURL: url })
-                //     .then(() => {
-                //         setTimeout(() => {
-                //             Navigate('/');
-                //         }, 3000);
-                //     })
-                  //  .catch(error => {
+                 updateUserProfile({ displayName: name, photoURL: url })
+                     .then(() => {
+                         setTimeout(() => {
+                             Navigate('/');
+                         }, 3000);
+                     })
+                    .catch(error => {
                         //     toast.error(error.message, { position: 'top-center' });
-                 //   });
+                    });
             })
             .catch(error => {
                 //   console.log('Error found', error.code);

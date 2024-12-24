@@ -47,22 +47,22 @@ const Navbar = () => {
                         Gallary
                     </Link>
                     
-                    {/* {user && (
+                    {user && (
                         <>
                             <Link
-                                to="/myEquipments"
+                                to="/myFoods"
                                 className={`hover:text-yellow-300 transition ${isActive('/myProfile') ? 'font-bold text-yellow-500' : ''}`}
                             >
-                                My Equipment List
+                                My Food List
                             </Link>
                             <Link
-                                to="/addEquipments"
+                                to="/addFood"
                                 className={`hover:text-yellow-300 transition ${isActive('/addEquipments') ? 'font-bold text-yellow-500' : ''}`}
                             >
-                                Add Equipment
+                                Add Food
                             </Link>
                         </>
-                    )} */}
+                    )}
                 </div>
 
                 {/* User Section */}

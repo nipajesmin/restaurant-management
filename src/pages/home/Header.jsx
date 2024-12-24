@@ -7,6 +7,7 @@ import header from '../../../public/img1.jpg';
 
 import header2 from '../../../public/img2.jpg';
 import header3 from '../../../public/img3.jpg';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -22,6 +23,13 @@ const Header = () => {
                     <h5 className="text-lg md:text-2xl font-semibold text-gray-700">
                         Savor the Taste of Perfection. Reserve Your Table Today.
                     </h5>
+                    <Link
+                        to="/allFood"
+                        className="btn btn-primary text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-lg mt-3"
+                    >
+                        Reserve Now
+
+                    </Link>
                 </div>
             </div>
 
@@ -39,49 +47,49 @@ const Header = () => {
                     className="swiper-container"
                 >
                     <Swiper>
-                    <SwiperSlide>
-        <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
-            <img
-                src={header}
-                className="w-full h-full object-cover"
-                alt="Slide 1"
-            />
-        </div>
-    </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+                                <img
+                                    src={header}
+                                    className="w-full h-full object-cover"
+                                    alt="Slide 1"
+                                />
+                            </div>
+                        </SwiperSlide>
 
-    {/* Slide 2 */}
-    <SwiperSlide>
-        <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
-            <img
-                src={header2}
-                className="w-full h-full object-cover"
-                alt="Slide 2"
-            />
-        </div>
-    </SwiperSlide>
+                        {/* Slide 2 */}
+                        <SwiperSlide>
+                            <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+                                <img
+                                    src={header2}
+                                    className="w-full h-full object-cover"
+                                    alt="Slide 2"
+                                />
+                            </div>
+                        </SwiperSlide>
 
-    {/* Slide 3 */}
-    <SwiperSlide>
-        <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
-            <img
-                src={header3}
-                className="w-full h-full object-cover"
-                alt="Slide 3"
-            />
-        </div>
-    </SwiperSlide>
+                        {/* Slide 3 */}
+                        <SwiperSlide>
+                            <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+                                <img
+                                    src={header3}
+                                    className="w-full h-full object-cover"
+                                    alt="Slide 3"
+                                />
+                            </div>
+                        </SwiperSlide>
 
-    {/* Slide 4 */}
-    <SwiperSlide>
-        <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
-            <img
-                src={header2}
-                className="w-full h-full object-cover"
-                alt="Slide 4"
-            />
-        </div>
-    </SwiperSlide>
-</Swiper>
+                        {/* Slide 4 */}
+                        <SwiperSlide>
+                            <div className="w-full h-64 md:h-96 bg-gray-200 rounded-lg overflow-hidden">
+                                <img
+                                    src={header2}
+                                    className="w-full h-full object-cover"
+                                    alt="Slide 4"
+                                />
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
 
                 </Swiper>
             </div>
