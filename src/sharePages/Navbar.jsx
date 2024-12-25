@@ -49,17 +49,18 @@ const Navbar = () => {
                     
                     {user && (
                         <>
-                            <Link
-                                to="/myFoods"
-                                className={`hover:text-yellow-300 transition ${isActive('/myProfile') ? 'font-bold text-yellow-500' : ''}`}
-                            >
-                                My Food List
-                            </Link>
+                            
                             <Link
                                 to="/addFood"
                                 className={`hover:text-yellow-300 transition ${isActive('/addEquipments') ? 'font-bold text-yellow-500' : ''}`}
                             >
                                 Add Food
+                            </Link>
+                            <Link
+                                to="/myFood"
+                                className={`hover:text-yellow-300 transition ${isActive('/addEquipments') ? 'font-bold text-yellow-500' : ''}`}
+                            >
+                                My Food List
                             </Link>
                         </>
                     )}

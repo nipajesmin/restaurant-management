@@ -9,6 +9,8 @@ import SignIn from "../pages/signIn/SignIn";
 import AllFoods from "./AllFoods";
 import SingleFood from "./SingleFood";
 import AddFood from "./AddFood";
+import MyFood from "./MyFood";
+import UpdateFood from "../pages/updateFood/UpdateFood";
 
 
 
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
       {
         path: "/addFood",
         element:<AddFood></AddFood> ,
+      },
+      {
+        path: "/myFood",
+        element:<MyFood></MyFood>,
+      },
+      {
+        path: "/updateFood/:id",
+        element:<UpdateFood></UpdateFood>,
       },
 
     ]

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const SingleFood = () => {
   const { id } = useParams();
   const [food, setFood] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFood = async () => {
@@ -47,7 +48,7 @@ const SingleFood = () => {
         </div>
         <div className="bg-gray-100 p-6 rounded-lg shadow-md">
           <p className="text-lg font-semibold text-gray-700 mb-2">
-            <strong>Category:</strong> {food.categoryname}
+            <strong>Category:</strong> {food.category}
           </p>
           <p className="text-lg font-semibold text-gray-700 mb-2">
             <strong>Price:</strong> ${food.price}
@@ -56,17 +57,26 @@ const SingleFood = () => {
             <strong>Rating:</strong> {food.rating} ⭐
           </p>
           <p className="text-lg font-semibold text-gray-700 mb-2">
-            <strong>Customization:</strong> {food.customization}
+            <strong>Food Origin:</strong> {food.origin}
           </p>
           <p className="text-lg font-semibold text-gray-700 mb-2">
-            <strong>Processing Time:</strong> {food.processingTime}
+            <strong>Quantity:</strong> {food.quantity}
           </p>
+          
           <p className="text-lg font-semibold text-gray-700 mb-2">
-            <strong>Stock Status:</strong> {food.stockStatus} in stock
+            <strong>Purchase Count:</strong> {food.purchase}
           </p>
           <p className="text-lg text-gray-600 mt-4">
             <strong>Description:</strong> {food.description}
           </p>
+
+          {/* Purchase Button */}
+          <button
+            className="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition"
+            onClick={() => navigate(`/purchase/${id}`)}
+          >
+            Purchase
+          </button>
         </div>
       </div>
 

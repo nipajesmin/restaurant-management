@@ -34,6 +34,7 @@ const AddFood = () => {
                 name: userName,
                 email: userEmail,
             },
+            purchase: 0 ,
         };
 
         console.log(newFood);
