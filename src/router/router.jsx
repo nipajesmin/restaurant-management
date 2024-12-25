@@ -11,6 +11,7 @@ import SingleFood from "./SingleFood";
 import AddFood from "./AddFood";
 import MyFood from "./MyFood";
 import UpdateFood from "../pages/updateFood/UpdateFood";
+import FoodPurchase from "../pages/purchaseFood/FoodPurchase";
 
 
 
@@ -52,6 +53,11 @@ const router = createBrowserRouter([
         path: "/updateFood/:id",
         element:<UpdateFood></UpdateFood>,
       },
+      {
+        path: "/foodPurchase/:id",
+        element:<FoodPurchase></FoodPurchase>,
+      },
+      
 
     ]
   },

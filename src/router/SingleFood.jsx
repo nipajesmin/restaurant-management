@@ -73,7 +73,7 @@ const SingleFood = () => {
           {/* Purchase Button */}
           <button
             className="mt-4 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition"
-            onClick={() => navigate(`/purchase/${id}`)}
+            onClick={() => navigate(`/foodPurchase/${id}`)}
           >
             Purchase
           </button>

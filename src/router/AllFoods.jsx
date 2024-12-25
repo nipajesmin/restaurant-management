@@ -82,7 +82,7 @@ const AllFoods = () => {
                                 You cannot purchase your own food item.
                             </p>
                         )}
-                        <button
+                        {/* <button
                             className={`mt-4 py-2 px-4 rounded ${food.quantity === 0 || food.addedBy === userEmail
                                     ? 'bg-gray-400 cursor-not-allowed'
                                     : 'bg-blue-500 text-white hover:bg-blue-600'
@@ -90,7 +90,7 @@ const AllFoods = () => {
                             disabled={food.quantity === 0 || food.addedBy === userEmail}
                         >
                             Add to Cart
-                        </button>
+                        </button> */}
                         <button
                             className="mt-4 ml-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
                             onClick={() => navigate(`/allFoods/${food._id}`)}
