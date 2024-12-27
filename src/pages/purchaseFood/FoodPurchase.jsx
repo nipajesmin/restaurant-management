@@ -60,7 +60,7 @@ const FoodPurchase = () => {
     const handlePurchase = async (event) => {
         event.preventDefault();
         const quantityToPurchase = parseInt(event.target.quantity.value);
-    
+
         if (quantityToPurchase > food.quantity) {
             Swal.fire(
                 'Insufficient Quantity',
@@ -69,17 +69,18 @@ const FoodPurchase = () => {
             );
             return;
         }
-    
+
         const orderDetails = {
             foodId: food._id,
             foodName: food.name,
+            foodImage: food.image,
             buyerName: user?.displayName,
             buyerEmail: user?.email,
             price: food.price,
             quantity: quantityToPurchase,
             orderDate: new Date().toISOString(),
         };
-    
+
         try {
             // Save the order in the database
             const orderResponse = await fetch(`http://localhost:3000/orders`, {
@@ -89,26 +90,27 @@ const FoodPurchase = () => {
                 },
                 body: JSON.stringify(orderDetails),
             });
-    
+
             if (!orderResponse.ok) {
                 throw new Error('Failed to place order.');
             }
-    
+
             Swal.fire('Success!', 'Your order has been placed successfully!', 'success');
             navigate('/myOrders'); // Redirect to MyOrders route
         } catch (error) {
             Swal.fire('Error', error.message, 'error');
         }
     };
-    
-    
-    
+
+
+
 
     return (
         <div className="w-11/12 mx-auto mt-10">
             <h2 className="text-center text-4xl font-bold my-6 text-blue-600">
                 Purchase {food.name}
             </h2>
+            
 
             {/* If quantity is 0, show a message and disable the purchase form */}
             {food.quantity === 0 ? (
