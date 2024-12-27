@@ -14,6 +14,7 @@ import UpdateFood from "../pages/updateFood/UpdateFood";
 import FoodPurchase from "../pages/purchaseFood/FoodPurchase";
 import MyOrders from "./MyOrders";
 import GalleryPage from "./GalleryPage";
+import Error from "../pages/Error/Error";
 
 
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h2>route not found</h2>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
