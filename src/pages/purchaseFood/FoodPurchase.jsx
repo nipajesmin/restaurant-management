@@ -18,7 +18,9 @@ const FoodPurchase = () => {
                     throw new Error('Food not found');
                 }
                 const data = await response.json();
+                data.quantity = parseInt(data.quantity); // Ensure quantity is a number
                 setFood(data);
+                console.log(data)
             } catch (err) {
                 setError(err.message);
             }
@@ -92,27 +94,14 @@ const FoodPurchase = () => {
                 throw new Error('Failed to place order.');
             }
     
-            const orderData = await orderResponse.json();
-    
-            // Update the food quantity in the backend
-            const updateResponse = await fetch(`http://localhost:3000/foods/${food._id}/purchase`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ quantity: quantityToPurchase }),
-            });
-    
-            if (!updateResponse.ok) {
-                throw new Error('Failed to update purchase count.');
-            }
-    
             Swal.fire('Success!', 'Your order has been placed successfully!', 'success');
             navigate('/myOrders'); // Redirect to MyOrders route
         } catch (error) {
             Swal.fire('Error', error.message, 'error');
         }
     };
+    
+    
     
 
     return (
@@ -183,4 +172,6 @@ const FoodPurchase = () => {
 };
 
 export default FoodPurchase;
+
+
 

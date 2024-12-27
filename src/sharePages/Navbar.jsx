@@ -91,6 +91,13 @@ const Navbar = () => {
                                     >
                                         Add Food
                                     </Link>
+                                    <Link
+                                        to="/myOrders"
+                                        className="block px-4 py-2 hover:bg-gray-200 transition"
+                                        onClick={closeDropdown} // Close dropdown on link click
+                                    >
+                                        My Orders
+                                    </Link>
                                     <button
                                         onClick={() => {
                                             signOutUser();

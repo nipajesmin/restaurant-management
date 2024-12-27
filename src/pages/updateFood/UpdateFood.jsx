@@ -23,10 +23,13 @@ const UpdateFood = () => {
       const form = e.target;
       const updatedFood = {
         name: form.name.value,
+        image: form.image.value,
         price: parseFloat(form.price.value),
         category: form.category.value,
+        origin: form.origin.value,
+        description: form.description.value,
         quantity: parseInt(form.quantity.value, 10),
-        email: user.email, // Add user's email for authorization
+       // email: user.email, // Add user's email for authorization
       };
 
       fetch(`http://localhost:3000/foods/${id}`, {
