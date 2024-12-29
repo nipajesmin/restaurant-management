@@ -40,6 +40,8 @@ const GalleryPage = () => {
         {/* Page Title */}
         <div className="bg-slate-400 py-10 text-center">
           <h1 className="text-white text-4xl font-bold">Gallery Page</h1>
+          <p className="text-lg md:text-xl leading-relaxed p-12">
+            Welcome to our restaurant's gallery, where every picture tells a story of flavor, ambiance, and unforgettable moments. Explore a visual journey through our signature dishes, crafted with passion and the finest ingredients. Discover the vibrant energy of our events and the warm, inviting atmosphere that makes every visit special. From sizzling platters to cozy corners, our gallery captures the essence of what makes dining with us a truly memorable experience. Let the images inspire your next visit, where taste and elegance come together in perfect harmony</p>
         </div>
   
         {/* Gallery Section */}

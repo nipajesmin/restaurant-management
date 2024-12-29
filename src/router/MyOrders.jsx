@@ -11,16 +11,21 @@ const MyOrders = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/orders/${user?.email}`);
+                const response = await fetch(`https://restaurant-management-server-tawny.vercel.app/orders/${user?.email}`, {
+                    credentials: 'include', // Include cookies in the request
+                });
+
                 if (!response.ok) {
-                    throw new Error('Failed to fetch orders.');
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to fetch orders.');
                 }
+
                 const data = await response.json();
                 setOrders(data.orders);
 
                 // Fetch food details for each order
                 const foodPromises = data.orders.map(order =>
-                    fetch(`http://localhost:3000/foods/${order.foodId}`)
+                    fetch(`https://restaurant-management-server-tawny.vercel.app/foods/${order.foodId}`)
                         .then(res => res.json())
                         .catch(() => null) // Ignore errors for individual fetches
                 );
@@ -36,6 +41,7 @@ const MyOrders = () => {
                 setFoodDetails(foodMap);
             } catch (err) {
                 setError(err.message);
+                Swal.fire('Error', err.message, 'error'); // Display an error alert
             }
         };
 
@@ -43,6 +49,7 @@ const MyOrders = () => {
             fetchOrders();
         }
     }, [user?.email]);
+
 
     const deleteOrder = async (orderId) => {
         Swal.fire({
@@ -56,7 +63,7 @@ const MyOrders = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = await fetch(`http://localhost:3000/orders/${orderId}`, {
+                    const response = await fetch(`https://restaurant-management-server-tawny.vercel.app/orders/${orderId}`, {
                         method: 'DELETE',
                     });
 
@@ -79,7 +86,7 @@ const MyOrders = () => {
             }
         });
     };
-    
+
 
     if (error) {
         return <p className="text-center text-red-500">Error: {error}</p>;

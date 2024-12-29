@@ -13,14 +13,14 @@ const FoodPurchase = () => {
     useEffect(() => {
         const fetchFood = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/foods/${id}`);
+                const response = await fetch(`https://restaurant-management-server-tawny.vercel.app/foods/${id}`);
                 if (!response.ok) {
                     throw new Error('Food not found');
                 }
                 const data = await response.json();
                 data.quantity = parseInt(data.quantity); // Ensure quantity is a number
                 setFood(data);
-                console.log(data)
+                //console.log(data)
             } catch (err) {
                 setError(err.message);
             }
@@ -83,7 +83,7 @@ const FoodPurchase = () => {
 
         try {
             // Save the order in the database
-            const orderResponse = await fetch(`http://localhost:3000/orders`, {
+            const orderResponse = await fetch(`https://restaurant-management-server-tawny.vercel.app/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ const FoodPurchase = () => {
             <h2 className="text-center text-4xl font-bold my-6 text-blue-600">
                 Purchase {food.name}
             </h2>
-            
+
 
             {/* If quantity is 0, show a message and disable the purchase form */}
             {food.quantity === 0 ? (

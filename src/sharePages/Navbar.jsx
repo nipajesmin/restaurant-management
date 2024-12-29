@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Authcontext from '../context/Authcontext';
-
 
 
 const Navbar = () => {
@@ -9,6 +8,7 @@ const Navbar = () => {
     const { user, signOutUser } = useContext(Authcontext);
     const location = useLocation();
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    
 
     // Function to check if the current route is active
     const isActive = (path) => location.pathname === path;
@@ -22,6 +22,9 @@ const Navbar = () => {
     const closeDropdown = () => {
         setDropdownOpen(false);
     };
+
+
+    
     return (
         <nav className="bg-slate-300 text-white shadow-md">
             <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:justify-between items-center">
@@ -58,10 +61,10 @@ const Navbar = () => {
                         Gallary
                     </Link>
 
-                    
+
                 </div>
- {/* User Section */}
- <div className="mt-4 md:mt-0 flex items-center space-x-4 relative">
+                {/* User Section */}
+                <div className="mt-4 md:mt-0 flex items-center space-x-4 relative">
                     {user && user.email ? (
                         <div className="relative">
                             <img
@@ -126,6 +129,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                     )}
+                     
                 </div>
             </div>
         </nav>

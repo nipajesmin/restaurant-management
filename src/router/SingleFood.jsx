@@ -10,7 +10,7 @@ const SingleFood = () => {
   useEffect(() => {
     const fetchFood = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/foods/${id}`);
+        const response = await fetch(`https://restaurant-management-server-tawny.vercel.app/foods/${id}`);
         if (!response.ok) {
           throw new Error('Food not found');
         }

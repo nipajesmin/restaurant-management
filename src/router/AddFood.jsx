@@ -37,10 +37,10 @@ const AddFood = () => {
             purchase: 0 ,
         };
 
-        console.log(newFood);
+      //  console.log(newFood);
 
         // Send data to the server
-        fetch('http://localhost:3000/foods', {
+        fetch('https://restaurant-management-server-tawny.vercel.app/foods', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newFood),

@@ -10,7 +10,7 @@ const AllFoods = () => {
 
     // Fetch data from the API
     useEffect(() => {
-        fetch('http://localhost:3000/foods') 
+        fetch('https://restaurant-management-server-tawny.vercel.app/foods') 
             .then(response => response.json())
             .then(data => {
                 setFoods(data);

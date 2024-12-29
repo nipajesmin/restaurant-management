@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Authcontext from '../../context/Authcontext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,6 +7,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const Register = () => {
 
     const { createUser, updateUserProfile } = useContext(Authcontext);
+    const navigate = useNavigate();
+
     const handleRegister = (e) => {
         // const form = new FormData(e.target);
         // const name = form.get("name");
@@ -63,7 +65,7 @@ const Register = () => {
                  updateUserProfile({ displayName: name, photoURL: url })
                      .then(() => {
                          setTimeout(() => {
-                             Navigate('/');
+                             navigate('/');
                          }, 3000);
                      })
                     .catch(error => {

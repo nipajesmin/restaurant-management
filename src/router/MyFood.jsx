@@ -2,23 +2,44 @@ import React, { useContext, useEffect, useState } from 'react';
 import Authcontext from '../context/Authcontext';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const MyFood = () => {
   const { user } = useContext(Authcontext);
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   if (user?.email) {
+  //     // fetch(`http://localhost:3000/foods?email=${user.email}`)
+  //     fetch(`http://localhost:3000/food/${user.email}`)
+     
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setFoods(data);
+  //         setLoading(false);
+  //       })
+  //       .catch((err) => {
+  //         console.error(err);
+  //         setLoading(false);
+  //       });
+  //   }
+  // }, [user]);
   useEffect(() => {
     if (user?.email) {
-     // fetch(`http://localhost:3000/foods?email=${user.email}`)
-     fetch(`http://localhost:3000/food/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setFoods(data);
+      axios
+        .get(`https://restaurant-management-server-tawny.vercel.app/food/${user.email}`, {
+          withCredentials: true, // Include cookies in the request
+        })
+        .then((response) => {
+          setFoods(response.data);
           setLoading(false);
         })
-        .catch((err) => {
-          console.error(err);
+        .catch((error) => {
+          console.error(error);
+          const errorMessage =
+            error.response?.data?.message || 'Failed to fetch foods';
+          Swal.fire('Error', errorMessage, 'error'); // Display an error alert
           setLoading(false);
         });
     }
@@ -54,7 +75,7 @@ const MyFood = () => {
               >
                 Update
               </Link>
-              
+
             </div>
           </div>
         ))}

@@ -11,7 +11,7 @@ const UpdateFood = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/foods/${id}`)
+        fetch(`https://restaurant-management-server-tawny.vercel.app/foods/${id}`)
             .then((res) => res.json())
             .then((data) => setFood(data))
             .catch((err) => console.error(err));
@@ -32,7 +32,7 @@ const UpdateFood = () => {
        // email: user.email, // Add user's email for authorization
       };
 
-      fetch(`http://localhost:3000/foods/${id}`, {
+      fetch(`https://restaurant-management-server-tawny.vercel.app/foods/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

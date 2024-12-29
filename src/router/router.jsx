@@ -15,6 +15,7 @@ import FoodPurchase from "../pages/purchaseFood/FoodPurchase";
 import MyOrders from "./MyOrders";
 import GalleryPage from "./GalleryPage";
 import Error from "../pages/Error/Error";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myFood",
-        element:<MyFood></MyFood>,
+        element:<PrivateRoute><MyFood></MyFood></PrivateRoute>,
       },
       {
         path: "/updateFood/:id",
@@ -58,11 +59,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/foodPurchase/:id",
-        element:<FoodPurchase></FoodPurchase>,
+        element:<PrivateRoute><FoodPurchase></FoodPurchase></PrivateRoute>,
       },
       {
         path: "/myOrders",
-        element:<MyOrders></MyOrders>,
+        element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>,
       },
       {
         path: "/gallery",

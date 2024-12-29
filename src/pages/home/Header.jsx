@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles (updated path)
 
@@ -10,8 +10,10 @@ import header3 from '../../../public/img3.jpg';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
+
     return (
         <div className="w-11/12 mx-auto">
+            
             <div className="w-11/12 mx-auto">
                 <div className="bg-gray-100 text-gray-900 p-8 md:p-12 rounded-lg shadow-lg max-w-4xl mx-auto text-center mt-5">
                     <h1 className="text-3xl md:text-5xl font-bold mb-4">
@@ -24,8 +26,8 @@ const Header = () => {
                         Savor the Taste of Perfection. Reserve Your Table Today.
                     </h5>
                     <Link
-                        to="/allFood"
-                        className="btn btn-primary text-white bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg text-lg mt-3"
+                        to="/allFoods"
+                        className="btn btn-primary text-white bg-emerald-700 hover:bg-teal-400 px-6 py-3  text-lg mt-3"
                     >
                         Reserve Now
 
