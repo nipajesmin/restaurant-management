@@ -42,7 +42,7 @@ const Home = () => {
             </div>
 
             {/* Page Content */}
-            <Header />
+            <Header  />
             <TopSellingFoods />
             <FoodDeliver />
             <Review />

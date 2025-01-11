@@ -5,12 +5,13 @@ const AllFoods = () => {
     const [foods, setFoods] = useState([]); // State to store the food data
     const [searchQuery, setSearchQuery] = useState(''); // State to handle search input
     const [loading, setLoading] = useState(true); // State to handle loading
+    const [sortOrder, setSortOrder] = useState('asc'); // State to handle sorting order
     const userEmail = 'user@example.com'; // Replace with the logged-in user's email
     const navigate = useNavigate();
 
     // Fetch data from the API
     useEffect(() => {
-        fetch('https://restaurant-management-server-tawny.vercel.app/foods') 
+        fetch('https://restaurant-management-server-tawny.vercel.app/foods')
             .then(response => response.json())
             .then(data => {
                 setFoods(data);
@@ -26,6 +27,14 @@ const AllFoods = () => {
     const filteredFoods = foods.filter(food =>
         food.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+    // Sort foods based on the selected sorting order
+    const sortedFoods = filteredFoods.sort((a, b) => {
+        if (sortOrder === 'asc') {
+            return a.price - b.price; // Ascending order
+        } else {
+            return b.price - a.price; // Descending order
+        }
+    });
 
     if (loading) {
         return <div>Loading...</div>;
@@ -42,7 +51,7 @@ const AllFoods = () => {
             </div>
 
             {/* Search Bar */}
-            <div className="my-5 text-center">
+            <div className="my-5 flex flex-col md:flex-row justify-between items-center">
                 <input
                     type="text"
                     placeholder="Search foods by name..."
@@ -50,6 +59,15 @@ const AllFoods = () => {
                     value={searchQuery}
                     onChange={e => setSearchQuery(e.target.value)}
                 />
+                {/* Sorting Dropdown */}
+                <select
+                    className="border border-gray-300 rounded-lg p-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    value={sortOrder}
+                    onChange={e => setSortOrder(e.target.value)}
+                >
+                    <option value="asc">Price: Low to High</option>
+                    <option value="desc">Price: High to Low</option>
+                </select>
             </div>
 
             {/* Food Cards */}
@@ -65,9 +83,9 @@ const AllFoods = () => {
                             className="w-full h-40 object-cover rounded-lg mb-4"
                         />
                         <h2 className="text-xl font-bold">{food.name}</h2>
-                        <p className="text-gray-600">{food.description}</p>
+                        <p className="text-gray-600 line-clamp-2">{food.description}</p>
                         <p className="text-lg font-semibold mt-2">
-                        Price: ${Number(food.price).toFixed(2) || '0.00'}
+                            Price: ${Number(food.price).toFixed(2) || '0.00'}
                         </p>
                         <p className="text-gray-700">
                             Available Quantity: {food.quantity > 0 ? food.quantity : 'Out of Stock'}
@@ -92,7 +110,7 @@ const AllFoods = () => {
                             Add to Cart
                         </button> */}
                         <button
-                            className="mt-4 ml-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                            className="mt-4 ml-2 bg-emerald-700 text-white py-2 px-4 rounded hover:bg-green-500"
                             onClick={() => navigate(`/allFoods/${food._id}`)}
                         >
                             View Details

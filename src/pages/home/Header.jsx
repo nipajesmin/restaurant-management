@@ -27,7 +27,7 @@ const Header = () => {
                     </h5>
                     <Link
                         to="/allFoods"
-                        className="btn btn-primary text-white bg-emerald-700 hover:bg-teal-400 px-6 py-3  text-lg mt-3"
+                        className="btn btn-primary text-white bg-emerald-700 hover:bg-green-500 px-6 py-3  text-lg mt-3"
                     >
                         Reserve Now
 

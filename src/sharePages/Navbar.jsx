@@ -26,8 +26,8 @@ const Navbar = () => {
 
     
     return (
-        <nav className="bg-slate-300 text-white shadow-md">
-            <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:justify-between items-center">
+        <nav className="bg-emerald-700 text-white shadow-md  sticky top-0 z-10 pr-5 pl-5">
+            <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row md:justify-between items-center ">
                 {/* Logo Section */}
                 <div className="mb-4 md:mb-0">
                     <Link
@@ -117,13 +117,13 @@ const Navbar = () => {
                         <div className="flex space-x-4">
                             <Link
                                 to="/signin"
-                                className={`text-black hover:text-blue-600 transition ${isActive('/signin') ? 'font-bold text-yellow-500' : ''}`}
+                                className={`text-black hover:text-slate-50 transition ${isActive('/signin') ? 'font-bold text-yellow-500' : ''}`}
                             >
                                 Sign In
                             </Link>
                             <Link
                                 to="/register"
-                                className={`text-black hover:text-blue-600 transition ${isActive('/register') ? 'font-bold text-yellow-500' : ''}`}
+                                className={`text-black hover:text-slate-50 transition ${isActive('/register') ? 'font-bold text-yellow-500' : ''}`}
                             >
                                 Register
                             </Link>

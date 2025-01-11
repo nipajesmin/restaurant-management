@@ -98,56 +98,60 @@ const MyOrders = () => {
 
     return (
         <div className="w-11/12 mx-auto mt-10">
-            <h2 className="text-4xl font-bold text-blue-600 text-center mb-6">My Orders</h2>
+        <h2 className="text-4xl font-bold text-black text-center mb-6">My Orders</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {orders.map(order => {
-                    const food = foodDetails[order.foodId] || {};
-                    return (
-                        <div
-                            key={order._id}
-                            className="p-4 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition"
-                        >
-                            {food.image && (
-                                <img
-                                    src={food.image}
-                                    alt={food.name}
-                                    className="w-full h-40 object-cover rounded-md mb-4"
-                                />
-                            )}
-                            <h3 className="text-xl font-semibold text-gray-800">{order.foodName}</h3>
-                            <p className="text-gray-700">
-                                <strong>Price:</strong> ${order.price}
-                            </p>
-                            <p className="text-gray-700">
-                                <strong>Quantity:</strong> {order.quantity}
-                            </p>
-                            <p className="text-gray-700">
-                                <strong>Order Date:</strong>{' '}
-                                {new Date(order.orderDate).toLocaleDateString()}
-                            </p>
-                            {food.addedBy?.name && (
-                                <p className="text-gray-700">
-                                    <strong>Owner Name:</strong> {food.addedBy.name}
-                                </p>
-                            )}
-                            {food.addedBy?.email && (
-                                <p className="text-gray-700">
-                                    <strong>Owner Email:</strong> {food.addedBy.email}
-                                </p>
-                            )}
-                            <button
-                                onClick={() => deleteOrder(order._id)}
-                                className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
-                            >
-                                Delete Order
-                            </button>
-                        </div>
-                    );
-                })}
-            </div>
+        <div className="overflow-x-auto">
+            <table className="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr className="bg-gray-200">
+                        <th className="border border-gray-300 px-4 py-2">Image</th>
+                        <th className="border border-gray-300 px-4 py-2">Food Name</th>
+                        <th className="border border-gray-300 px-4 py-2">Price</th>
+                        <th className="border border-gray-300 px-4 py-2">Quantity</th>
+                        <th className="border border-gray-300 px-4 py-2">Order Date</th>
+                        <th className="border border-gray-300 px-4 py-2">Owner Name</th>
+                        <th className="border border-gray-300 px-4 py-2">Owner Email</th>
+                        <th className="border border-gray-300 px-4 py-2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {orders.map(order => {
+                        const food = foodDetails[order.foodId] || {};
+                        return (
+                            <tr key={order._id} className="hover:bg-gray-50">
+                                <td className="border border-gray-300 px-4 py-2 text-center">
+                                    {food.image && (
+                                        <img
+                                            src={food.image}
+                                            alt={food.name}
+                                            className="w-16 h-16 object-cover rounded-md mx-auto"
+                                        />
+                                    )}
+                                </td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">{order.foodName}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">${order.price}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">{order.quantity}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">
+                                    {new Date(order.orderDate).toLocaleDateString()}
+                                </td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">{food.addedBy?.name || 'N/A'}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">{food.addedBy?.email || 'N/A'}</td>
+                                <td className="border border-gray-300 px-4 py-2 text-center">
+                                    <button
+                                        onClick={() => deleteOrder(order._id)}
+                                        className="px-4 py-2 bg-emerald-700 text-white rounded-md hover:bg-green-500 transition"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
         </div>
-    );
+    </div>
+);
 };
 
 export default MyOrders;

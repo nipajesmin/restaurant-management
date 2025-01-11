@@ -30,8 +30,11 @@ const TopSellingFoods = () => {
   }
 
   return (
-    <div className="w-11/12 mx-auto mt-10">
-      <h2 className="text-3xl font-bold text-center mb-6 text-emerald-900">Top Selling Foods</h2>
+    <div className="w-11/12 mx-auto mt-10 py-16">
+      <h2 className="text-4xl font-extrabold text-center text-black mb-10">Top Selling Foods</h2>
+      <p className="text-center text-gray-600 text-lg mb-10">
+        You can explore our top food.This foods are purchased maximum time by our customers.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {topFoods.map((food) => (
           <div
@@ -44,13 +47,13 @@ const TopSellingFoods = () => {
               className="w-full h-40 object-cover rounded-lg mb-4"
             />
             <h2 className="text-xl font-bold">{food.name}</h2>
-            <p className="text-gray-600">{food.description}</p>
+            <p className="text-gray-600 line-clamp-2">{food.description}</p>
             <p className="text-lg font-semibold mt-2">
               Price: ${Number(food.price).toFixed(2)}
             </p>
             <p className="text-gray-700">Purchased: {food.purchase} times</p>
             <button
-              className="mt-4 bg-emerald-500 text-white py-2 px-4 rounded hover:bg-teal-400"
+              className="mt-4 bg-emerald-700 text-white py-2 px-4 rounded hover:bg-green-500"
               onClick={() => navigate(`/allFoods/${food._id}`)}
             >
               View Details
@@ -60,7 +63,7 @@ const TopSellingFoods = () => {
       </div>
       <div className="flex justify-center mt-8">
         <button
-          className="bg-purple-400 text-gray-700 px-4 py-2 rounded-md hover:bg-fuchsia-300 transition"
+          className="bg-emerald-700 text-slate-50 px-4 py-2 rounded-md hover:bg-green-500 transition pr-5 pl-5"
           onClick={() => navigate('/allFoods')}
         >
           See All

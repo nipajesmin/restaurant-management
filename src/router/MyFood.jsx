@@ -13,7 +13,7 @@ const MyFood = () => {
   //   if (user?.email) {
   //     // fetch(`http://localhost:3000/foods?email=${user.email}`)
   //     fetch(`http://localhost:3000/food/${user.email}`)
-     
+
   //       .then((res) => res.json())
   //       .then((data) => {
   //         setFoods(data);
@@ -56,29 +56,49 @@ const MyFood = () => {
   return (
     <div className="w-11/12 mx-auto mt-10">
       <h2 className="text-3xl font-bold text-center mb-6">My Foods</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {foods.map((food) => (
-          <div key={food._id} className="card bg-base-100 shadow-xl p-4">
-            <img
-              src={food.image}
-              alt={food.name}
-              className="rounded-lg mb-4 w-full h-40 object-cover"
-            />
-            <h3 className="text-xl font-bold">{food.name}</h3>
-            <p className="text-gray-600">Price: ${food.price}</p>
-            <p className="text-gray-600">Category: {food.category}</p>
-            <p className="text-gray-600">Quantity: {food.quantity}</p>
-            <div className="flex gap-4 mt-4">
-              <Link
-                to={`/updateFood/${food._id}`}
-                className="btn btn-sm btn-primary"
-              >
-                Update
-              </Link>
-
-            </div>
-          </div>
-        ))}
+      <div className="overflow-x-auto">
+        <table className="table-auto w-full border-collapse border border-gray-300">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 px-4 py-2 text-left">Image</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Name</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Price</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Category</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Quantity</th>
+              <th className="border border-gray-300 px-4 py-2 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {foods.map((food) => (
+              <tr key={food._id} className="hover:bg-gray-50">
+                <td className="border border-gray-300 px-4 py-2 flex justify-center items-center">
+                  <img
+                    src={food.image}
+                    alt={food.name}
+                    className="w-20 h-20 object-cover rounded-lg"
+                  />
+                  {/* <img
+                    src={food.image}
+                    alt={food.name}
+                    className="w-full h-full object-cover rounded-lg"
+                  /> */}
+                </td>
+                <td className="border border-gray-300 px-4 py-2">{food.name}</td>
+                <td className="border border-gray-300 px-4 py-2">${food.price}</td>
+                <td className="border border-gray-300 px-4 py-2">{food.category}</td>
+                <td className="border border-gray-300 px-4 py-2">{food.quantity}</td>
+                <td className="border border-gray-300 px-4 py-2">
+                  <Link
+                    to={`/updateFood/${food._id}`}
+                    className="text-emerald-700 hover:underline"
+                  >
+                    Update
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
