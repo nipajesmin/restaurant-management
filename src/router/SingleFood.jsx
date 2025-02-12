@@ -33,7 +33,7 @@ const SingleFood = () => {
 
   return (
     <div className="w-11/12 mx-auto mt-10">
-      <h2 className="text-center text-4xl font-bold my-6 text-blue-600">
+      <h2 className="text-center text-4xl font-bold my-6 text-black">
         {food.name}
       </h2>
 
