@@ -11,6 +11,8 @@ import img7 from "../../public/img1 (7).jpg";
 import img8 from "../../public/img1 (8).jpg";
 import img9 from "../../public/img1 (9).jpg";
 import img10 from "../../public/img1 (10).jpg";
+import img12 from "../../public/img1 (12).jpg";
+import img13 from "../../public/img1 (13).jpg";
 
 const GalleryPage = () => {
   const [open, setOpen] = useState(false);
@@ -28,6 +30,8 @@ const GalleryPage = () => {
     { src: img8, alt: "Image 8" },
     { src: img9, alt: "Image 9" },
     { src: img10, alt: "Image 10" },
+    { src: img12, alt: "Image 12" },
+    { src: img13, alt: "Image 13" },
   ];
 
   const handleImageClick = (index) => {
