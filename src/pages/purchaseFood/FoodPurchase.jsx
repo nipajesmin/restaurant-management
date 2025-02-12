@@ -47,7 +47,7 @@ const FoodPurchase = () => {
                     This item was added by you. Please explore other items.
                 </p>
                 <button
-                    className="mt-6 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+                    className="mt-6 bg-emerald-700 text-white py-2 px-4 rounded hover:bg-green-500 transition"
                     onClick={() => navigate('/allFoods')}
                 >
                     Go Back to All Foods
@@ -122,7 +122,7 @@ const FoodPurchase = () => {
                         Sorry, this food item is not available for purchase right now.
                     </p>
                     <button
-                        className="mt-6 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+                        className="mt-6 bg-emerald-700 text-white py-2 px-4 rounded hover:bg-green-500 transition"
                         onClick={() => navigate('/allFoods')}
                     >
                         Go Back to All Foods
