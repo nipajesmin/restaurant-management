@@ -45,7 +45,7 @@ const GalleryPage = () => {
       </div>
 
       {/* Gallery Section */}
-      <div className="container mx-auto mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4">
+      <div className="container mx-auto mt-10 px-6 md:px-8 lg:px-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map((image, index) => (
           <div
             key={index}
@@ -60,6 +60,7 @@ const GalleryPage = () => {
           </div>
         ))}
       </div>
+
 
 
       {/* Lightbox */}
